@@ -22,7 +22,6 @@ class TestDocuments():
         assert response.json().get('id') == 0
 
     def test_get_doc_by_id(self):
-        body = {"title": "New title", "body": "TEXT"}
         response = requests.post(f'{api_url}/v1/docs/0')
         assert response.status_code == 200
         assert response.json().get('title') == 'New title'
