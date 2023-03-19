@@ -19,7 +19,7 @@ jobs:
       #PUSH
 
       - name: Login into Docker Hub 
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/login-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
