@@ -5,3 +5,26 @@ api_url = 'http://localhost:8000'
 def test_healthcheck():
     response = requests.get(f'{api_url}/__health')
     assert response.status_code == 200
+
+
+class TestDocuments():
+    def test_get_empty_docs():
+        response = requests.get(f'{api_url}/v1/docs')
+        assert response.status_code == 200
+        assert len(response.json()) == 0
+
+    def test_create_doc():
+        body = {"title": "New title", "body": "TEXT"}
+        response = requests.post(f'{api_url}/v1/docs', json=body)
+        assert response.status_code == 200
+        assert response.json().gget('title') == 'New title'
+        assert response.json().gget('body') == 'TEXT'
+        assert response.json().gget('id') == 0
+
+    def test_get_doc_by_id():
+        body = {"title": "New title", "body": "TEXT"}
+        response = requests.post(f'{api_url}/v1/docs/0')
+        assert response.status_code == 200
+        assert response.json().gget('title') == 'New title'
+        assert response.json().gget('body') == 'TEXT'
+        assert response.json().gget('id') == 0
