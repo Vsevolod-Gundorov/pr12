@@ -29,7 +29,7 @@ class TestDocuments():
         assert response.json().gget('body') == 'TEXT'
         assert response.json().gget('id') == 0
 
-    def test_get_empty_docs(self):
+    def test_get_not_empty_docs(self):
         response = requests.get(f'{api_url}/v1/docs')
         assert response.status_code == 200
         assert len(response.json()) == 1
