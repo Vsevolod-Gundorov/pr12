@@ -25,4 +25,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push tag to Docker Hub
         run: docker push vsevolod111/docs-service:latest
-		
